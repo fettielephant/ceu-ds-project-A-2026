@@ -46,4 +46,4 @@ house_price_means['London'] = house_price['London']
 combined_data = combined_data.merge(house_price_means, how = 'left', on = 'Date')
 
 # convert to csv file
-combined_data.to_csv('combined_data.csv' index = False)
+combined_data.to_csv('combined_data.csv', index = False)
