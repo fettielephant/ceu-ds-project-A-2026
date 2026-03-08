@@ -1,6 +1,6 @@
 # Import libraries
 import pandas as pd
-import numpy as np
+
 
 # Datasets
 ftse_350 = pd.read_csv('ftse_350_monthly.csv')
