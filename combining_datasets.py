@@ -1,6 +1,6 @@
 # Import libraries
 import pandas as pd
-
+from sklearn.preprocessing import MinMaxScaler
 
 # Datasets
 ftse_350 = pd.read_csv('ftse_350_monthly.csv')
@@ -47,3 +47,13 @@ combined_data = combined_data.merge(house_price_means, how = 'left', on = 'Date'
 
 # convert to csv file
 combined_data.to_csv('combined_data.csv', index = False)
+
+# scale the data for visualization
+data = combined_data.drop('Date', axis = 1)
+combined_data_scaled = pd.DataFrame()
+combined_data_scaled['Date'] = combined_data['Date']
+for name in data.columns:
+    scaler = MinMaxScaler()
+    scaler.fit(data[[name]])
+    combined_data_scaled[name] = scaler.transform(data[[name]])
+combined_data_scaled.to_csv('combined_data_scaled.csv', index = False)
